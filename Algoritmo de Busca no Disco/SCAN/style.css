@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #FAF3E0;
+}
+
+p {
+    font-size: 18px;
+}
+
+#deslocamentoAtual, #deslocamento {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.explicacao {
+    display: flex;
+    justify-content: center;
+}
+
+.explicacao p {
+    margin: 0 10px;
+    width: 80%;
+}
+
+canvas {
+    border: 1px solid black;
+    display: block;
+    margin: 20px auto;
+}
+
+#div-grafico {
+    border: 2px dashed #c8b99a;
+    padding: 0 20px;
+    background-color: #f8f5eb;
+    width: 45%;
+    margin: 0.2vw auto 0 auto;
+    text-align: center;
+    position: relative;
+    margin: 1% auto;
+}
+
+#grafico {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#pgFault {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.blocos-buscados {
+    margin: 0 auto;
+    text-align: center;
+    border: 3px dashed #c2b6a3; 
+    border-radius: 10px;
+    background-color: #ebe7df; 
+    padding: 20px; 
+    max-width: 80%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+button {
+    background-color: #c8b99a;
+    color: #3d2f1c;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #b8a584;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #b8a584;
+}
+
+button:active {
+    background-color: #a89576;
+    transform: translateY(2px);
+}
+
+button:focus {
+    outline: 2px solid #b8a584;
+    outline-offset: 2px;
+}

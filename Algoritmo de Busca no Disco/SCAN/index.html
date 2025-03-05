@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Algoritmo de Busca no Disco SCAN</h1>
+    <br>
+    <div class="explicacao">
+        <p>O algoritmo de busca no disco <strong>SCAN (também conhecido como "elevador")</strong> é um método de escalonamento de acesso em disco utilizado para determinar como as solicitações de leitura/escrita no disco rígido são atendidas. Nesse algoritmo, o braço do disco se move em uma direção (crescente ou decrescente) atendendo as requisições à medida que as encontra, até atingir o fim do disco. Em seguida, ele inverte a direção e continua processando as solicitações no caminho de volta.</p>
+    </div>
+    <br>
+    <div class="blocos-buscados">
+        <p><b>Blocos Requeridos:</b> 500, 278, 914, 447, 71, 161, 659, 335</p>
+        <br>
+        <p><b>Ordem Buscada:</b> 500 ➝ 659 ➝ 914 ➝ 999 ➝ 447 ➝ 335 ➝ 278 ➝ 161 ➝ 71</p>
+    </div>
+
+    <div id="div-grafico">
+        <canvas id="grafico" width="400" height="200"></canvas>
+    </div>
+    
+    <button onclick="iniciarAnimacao()">Iniciar Animação</button>
+    <div id="pgFault">Clique em "Iniciar Animação" para começar</div>
+    <br>
+    <div id="deslocamentoAtual"><p><b>Blocos Deslocados:</b> 0 blocos</p></div>
+    <div id="deslocamento"><p><b>Total de Blocos Deslocados:</b> 0 blocos</p></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

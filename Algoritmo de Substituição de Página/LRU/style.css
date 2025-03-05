@@ -1,0 +1,399 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", serif;
+}
+
+body {
+    background-color: #FAF3E0;
+}
+
+.page h1 {
+    text-align: center;
+}
+
+.explicacao {
+    width: 100%;
+    align-items: center;
+    background-color: violet;
+    padding: 1.5rem 1rem;
+}
+
+.explicacao p {
+    font-size: 1.1rem;
+    justify-content: center;
+}
+
+.desenho {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.desenho strong {
+    background-color: #f1f1f1;
+}
+
+.desenho table {
+    background-color: white; 
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.desenho td {
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    padding: 2px;
+}
+
+.cpu {
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 100px;
+    border: 1px solid #333;
+    justify-content: center;
+}
+
+.resultado {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.explicacao-final {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: grey;
+    padding: 3px;
+}
+
+.explicacao-pratica h3 {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* CSS dos cards de explicação */
+.card-explicacao {
+    border: 2px dashed #c8b99a;
+    padding: 20px;
+    background-color: #f8f5eb;
+    max-width: 65%;
+    margin: 0.2vw auto 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.card-conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    margin-bottom: 15px;
+    overflow-y: auto;
+}
+
+.card-conteudo p:first-of-type {
+    position: sticky;
+    top: 0;
+    background-color: #f8f5eb; 
+    padding: 10px 0;
+    width: 100%;
+}
+
+.card-conteudo .paragrafo {
+    padding: 10px;
+    text-align: justify;
+}
+
+#pagina-2, #pagina-3, #pagina-4, #pagina-5 {
+    display: none;
+}
+
+.navegacao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navegacao button {
+    background-color: #c8b99a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 8%;
+}
+
+.navegacao button:hover {
+    background-color: #a38e6f;
+}
+
+.cadeia-referencia {
+    margin: 0 auto;
+    text-align: center;
+    border: 3px dashed #c2b6a3; 
+    border-radius: 10px;
+    background-color: #ebe7df; 
+    padding: 20px; 
+    max-width: 80%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.ram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#tabela-ram {
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+td {
+    padding: 5px 10px; 
+    text-align: center; 
+    border: 1px solid #ddd;
+}
+
+#linha-quadro-1 .page-fault, #linha-quadro-2 .page-fault, #linha-quadro-3 .page-fault {
+    background-color: red;
+}
+
+#linha-quadro-1 .page-hit, #linha-quadro-2 .page-hit, #linha-quadro-3 .page-hit {
+    background-color: green;
+}
+
+/* Estilo para primeira célula da linha */
+#tabela-ram tr td:first-child {
+    background-color: #d9d2c3;
+    font-weight: bold; 
+}
+
+/* Estilo para linhas alternadas */
+#tabela-ram tr:nth-child(even) {
+    background-color: #ebe7df;
+}
+
+#tabela-ram tr#linha-paginas td, #tabela-ram tr#linha-tempo td {
+    background-color: #c2b6a3;
+    font-weight: bold;
+}
+
+.fila-page-fault {
+    color: red;
+}
+
+.fila-page-hit {
+    color: green;
+}
+
+.fila-processamento {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px dashed #c2b6a3; 
+    border-radius: 10px;
+    background-color: #ebe7df; 
+    padding: 15px; 
+    width: 80%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+#fila-paginas, #fila-paginas-processadas {
+    display: flex; 
+    gap: 10px;
+    justify-content: flex-start; 
+}
+
+#fila-paginas-operacional {
+    display: flex; 
+    gap: 10px;
+    justify-content: flex-start; 
+    padding: 10px; 
+}
+
+#fila-paginas-operacional .operation-page {
+    font-size: 0;
+    background-color: white;
+    color: white;
+    visibility: hidden;
+}
+
+#simulacao {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px auto;
+    width: 90%;
+}
+
+.elemento {
+    width: 15%;
+    height: 9vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f8f5eb;
+    border: 2px solid #c8b99a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+#ram, #cpu, #mmu, #disco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.titulo-ram {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.quadros {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+#cpu .quadros, #disco .quadros {
+    justify-content: center;
+}
+
+#mmu .quadros {
+    justify-content: center;
+    gap: 10px;
+}
+
+.quadro {
+    position: relative;
+    width: 30%;
+    height: 60%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#pagina-cpu {
+    width: 10rem;
+}
+
+.contador-utilizacao {
+    position: absolute;
+    top: 1.2%; /* Margem do topo */
+    right: 1%; /* Margem da direita */
+    width: 20px; /* Largura do quadrado */
+    height: 20px; /* Altura do quadrado */
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Torna o quadrado em círculo */
+}
+
+#estado {
+    margin-top: 20px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 1% auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#tabela-pagina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.titulo-tabela-pagina {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#tabela-pagina table {
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.seta {
+    position: absolute;
+    width: 100px;
+    height: 1%;
+    background: black;
+    transform-origin: left center;
+    animation: fade-in 1s ease-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

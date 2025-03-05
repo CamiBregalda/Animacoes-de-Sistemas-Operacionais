@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCFS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Algoritmo de Busca no Disco FCFS</h1>
+    <br>
+    <div class="explicacao">
+        <p>O algoritmo de busca no disco <strong>FCFS (First-Come, First-Served ou "Primeiro a Chegar, Primeiro a Ser Atendido")</strong> é um método de escalonamento de acesso em disco utilizado para determinar como as solicitações de leitura/escrita no disco rígido são atendidas. Esse algoritmo atende as requisições na ordem em que foram emitidas, sem priorização.</p>
+    </div>
+    <br>
+    <div class="blocos-buscados">
+        <p><b>Blocos Requeridos:</b> 500, 278, 914, 447, 71, 161, 659, 335</p>
+        <br>
+        <p><b>Ordem Buscada:</b> 500 ➝ 278 ➝ 914 ➝ 447 ➝ 71 ➝ 161 ➝ 659 ➝ 335</p>
+    </div>
+
+    <div id="div-grafico">
+        <canvas id="grafico" width="400" height="200"></canvas>
+    </div>
+    
+    <button onclick="iniciarAnimacao()">Iniciar Animação</button>
+    <div id="pgFault">Clique em "Iniciar Animação" para começar</div>
+    <br>
+    <div id="deslocamentoAtual"><p><b>Blocos Deslocados Para Chegar ao Bloco Requerido:</b> 0 blocos</p></div>
+    <div id="deslocamento"><p><b>Total de Blocos Deslocados:</b> 0 blocos</p></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+
+        <section>            
+            <div class="card-explicacao">
+                <h1>Algoritmo de Substituição de Página LRU</h1>
+                
+                <div class="card-conteudo" id="pagina-1">
+                    <p><strong>Execução de Processos</strong></p>
+                    <p class="paragrafo">
+                        Para que um processo possa ser executado, ele precisa estar presente na memória principal. Porém, na prática, o montante total de RAM demandado por todos os processos que devem ser executados é muitas vezes bem maior do que pode ser colocado na memória ao mesmo tempo.
+                    </p>
+                    <p class="paragrafo">
+                        Uma estratégia desenvolvida ao longo dos anos para lidar com essa sobrecarga de memória é a utilização de memória virtual, a qual permite que os programas possam ser executados mesmo quando estão apenas parcialmente na memória principal. A memória virtual são endereços gerados pela CPU que formam o espaço de endereçamento virtual.
+                    </p>
+                </div>
+                <div class="card-conteudo" id="pagina-2">
+                    <p><strong>Memória Virtual Por Paginação</strong></p>
+                    <p class="paragrafo">
+                        Quando se utiliza o conceito de memória virtual por página, ocorre uma relação linear entre endereços virtuais/lógicos, também chamados de páginas, presente na tabela de páginas acessada pela CPU, e os endereços físicos, também chamados de quadros, que correspondem localização real de um dado na memória principal (RAM) do sistema.  As páginas no espaço virtual correspondem a quadros de página na memória física, geralmente com o mesmo tamanho.
+                    </p>
+                    <p class="paragrafo">
+                        Os endereços virtuais não representam diretamente um endereço existente na memória física, eles são enviados para a MMU (Unidade de Gerenciamento de Memória), que os mapeia para endereços físicos correspondentes.
+                    </p>
+                </div>
+                <div class="card-conteudo" id="pagina-3">
+                    <p><strong>Gerenciamento dos Endereços de Memória</strong></p>
+                    <p class="paragrafo">
+                        O endereço virtual de um dado é dividido em dois componentes: o número da página virtual (bits mais significativos) e o deslocamento (bits menos significativos). O número da página virtual é usado como índice na tabela de páginas, que contém o mapeamento para o quadro de página correspondente, se ele existir. Já o deslocamento, somado ao valor do mapeamento encontrado através tabela de páginas, permite encontrar o dado na memória física. A MMU mapeia o número da página virtual, somado ao deslocamento, para formar o endereço físico final.
+                    </p>
+                </div>
+                <div class="card-conteudo" id="pagina-4">
+                    <p><strong>Gerenciamento de Páginas na Memória</strong></p>
+                    <p class="paragrafo">
+                        Porém, nem sempre as páginas necessárias estarão disponíveis na memória principal. Quando isso acontece, a MMU gera uma interrupção de <strong>Page-Fault (Falta de Página)</strong> e o processador precisa carregar a página da memória secundária até a memória RAM para continuar a execução do programa. Esse processo de carregar uma página armazenada no disco para a memória RAM é chamado de <strong>Page-in</strong>. A página pode ser adicionada na memória facilmente caso haja espaços livres ou pode ser necessário liberar espaço retirando outras páginas existentes, caso não houver.
+                    </p>
+                    <p class="paragrafo">
+                        Se a memória principal estiver cheia, utiliza-se um algoritmo de substituição de página para escolher uma página vítima que sofrerá um <strong>Page-Out</strong>, ou seja, que será removida da memória principal e, caso tenha sofrido modificação, será salva no disco. 
+                    </p>
+                    <p class="paragrafo">
+                        Após a página necessária estar na memória principal, os endereços são ajustados na tabela de páginas do processo e o mesmo é “acordado” para continuar sua execução.
+                    </p>
+                </div>
+                <div class="card-conteudo" id="pagina-5">
+                    <p><strong>Algoritmo de Substituição de Página Least Recently Used</strong></p>
+                    <p class="paragrafo">
+                        Algoritmo LRU funciona considerando o uso das páginas utilizando como base a ideia de que páginas com uso recente podem ser reutilizadas em breve. Ele atua retirando da RAM a página que não foi acessada há mais tempo. Para isso, mantém um registro das páginas acessadas recentemente, garantindo que as páginas menos utilizadas sejam as primeiras a serem substituídas quando a memória estiver cheia. 
+                    </p>
+                    <p class="paragrafo">
+                        <strong>Cadeia de referência: </strong>A cadeia de referência é uma sequência de páginas acessadas durante uma execução utilizada para o estudo de  algoritmos de substituição. Nesta simulação, utilizaremos a cadeia de referência abaixo:
+                    </p>
+                </div>
+
+                <div class="navegacao">
+                    <button id="anterior-btn">Anterior</button>
+                    <button id="proximo-btn">Próximo</button>
+                </div>
+
+                <br>
+            </div>
+        </section>
+
+        <section>
+            <div class="explicacao-pratica">
+                
+                <button id="iniciar">Iniciar Simulação</button>
+
+                <div class="cadeia-referencia">
+                    <p><b>Cadeia de Referência Utilizada:</b> 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1</p>
+                </div>
+
+                <br>
+
+                <div class="fila-processamento">
+                    <div class="container">
+                        <p><b>Fila de páginas a serem processadas:</b> </p>
+                        <div id="fila-paginas"></div>
+                    </div>
+                </div>
+
+                    <!-- Exibição do estado atual -->
+                    <div id="estado">
+                        <p id="descricao">.</p>
+                    </div>
+
+                    <div id="simulacao">
+                        <!-- Elementos da simulação -->
+                        <div class="elemento" id="cpu">
+                            <div class="titulo-ram">CPU</div>
+                            <div class="quadros">
+                                <div class="quadro" id="pagina-cpu"></div>
+                            </div>
+                        </div>
+                        <div class="elemento" id="tabela-pagina">
+                            <table>
+                                <tr>
+                                    <td colspan="2" class="titulo-tabela-pagina">Tabela de Páginas</td>
+                                </tr>
+                                <tr>
+                                    <td id="pagina-solicitada">...</td>
+                                    <td id="frame-pagina">...</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="elemento" id="mmu">
+                            <div class="titulo-ram">MMU</div>
+                            <div class="quadros">
+                                <div class="quadro" id="pagina-mmu-1"></div>
+                                +
+                                <div class="quadro" id="pagina-mmu-2"></div>
+                            </div>
+                        </div>
+                        <div class="elemento" id="ram">
+                            <div class="titulo-ram">RAM</div>
+                            <div class="quadros">
+                                <div class="quadro" id="quadro-1">
+                                    <div class="contador-utilizacao" id="contador-1"></div>
+                                    <span></span>
+                                </div>
+                                <div class="quadro" id="quadro-2">
+                                    <div class="contador-utilizacao" id="contador-2"></div>
+                                    <span></span>
+                                </div>
+                                <div class="quadro" id="quadro-3">
+                                    <div class="contador-utilizacao" id="contador-3"></div>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="elemento" id="disco">
+                            <!--Disco - Page-in, Page-out, Page-Fault-->
+                            <div class="titulo-ram">Disco</div>
+                            <div class="quadros">
+                                <div class="quadro" id="bloco-disco"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Memória RAM</h3>
+                    <div class="ram">
+                        <table id="tabela-ram">
+                            <tr id="linha-paginas">
+                                <td>Página Adicionada</td>
+                            </tr>
+                            <tr id="linha-quadro-1">
+                                <td>Quadro 1</td>
+                            </tr>
+                            <tr id="linha-quadro-2">
+                                <td>Quadro 2</td>
+                            </tr>
+                            <tr id="linha-quadro-3">
+                                <td>Quadro 3</td>
+                            </tr>
+                            <tr id="linha-tempo">
+                                <td>Tempo</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="fila-paginas-operacional"></div>
+    
+    <script src="script.js"></script>-
+</body>
+</html>

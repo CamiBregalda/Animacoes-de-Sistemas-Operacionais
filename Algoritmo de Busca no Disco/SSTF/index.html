@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSTF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Algoritmo de Busca no Disco SSTF</h1>
+    <br>
+    <div class="explicacao">
+        <p>O algoritmo de busca no disco <strong>SSTF (Shortest Seek Time First, ou "Menor Tempo de Busca Primeiro")</strong> é um método de escalonamento de acesso em disco utilizado para determinar como as solicitações de leitura/escrita no disco rígido são atendidas. Esse algoritmo prioriza as requisições que estão mais próximas da posição atual do braço do disco, minimizando o tempo de busca a cada etapa.</p>
+    </div>
+    <br>
+    <div class="blocos-buscados">
+        <p><b>Blocos Requeridos:</b> 500, 278, 914, 447, 71, 161, 659, 335</p>
+        <br>
+        <p><b>Ordem Buscada:</b> 500 ➝ 447 ➝ 335 ➝ 278 ➝ 161 ➝ 71 ➝ 659 ➝ 914</p>
+    </div>
+
+    <div id="div-grafico">
+        <canvas id="grafico" width="400" height="200"></canvas>
+    </div>
+    
+    <button onclick="iniciarAnimacao()">Iniciar Animação</button>
+    <div id="pgFault">Clique em "Iniciar Animação" para começar</div>
+    <br>
+    <div id="deslocamentoAtual"><p><b>Blocos Deslocados:</b> 0 blocos</p></div>
+    <div id="deslocamento"><p><b>Total de Blocos Deslocados:</b> 0 blocos</p></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
